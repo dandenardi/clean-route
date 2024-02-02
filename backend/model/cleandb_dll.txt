@@ -1,0 +1,22 @@
+-- Criação do banco de dados
+CREATE DATABASE nome_do_banco;
+
+-- Conexão ao banco de dados
+\c nome_do_banco;
+
+-- Criação da tabela clientes
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+
+-- Criação da tabela localizacoes
+CREATE TABLE localizacoes (
+    id SERIAL PRIMARY KEY,
+    cliente_id INTEGER NOT NULL,
+    coordenada_x INTEGER NOT NULL,
+    coordenada_y INTEGER NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
